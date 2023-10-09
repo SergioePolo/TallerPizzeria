@@ -1,20 +1,18 @@
 const orders =[]
+let counter = 0
+
 function sendData() {
-    var inputName = document.getElementById("name");
-    var inputValue = document.getElementById("value");
+    let inputName = document.getElementById("name");
+    let inputValue = document.getElementById("value");
 
-    var order = {}
-
-    order = {name:inputName.value,value: Number(inputValue.value)}
+    let order = {name:'',value:0}
+    order.name = inputName.value
+    order.value = Number(inputValue.value)
     
     orders.push(order)
     const body = document.querySelector("body");
-    const cards = document.querySelectorAll(".card");
-    cards.forEach(function(card) {
-        card.remove();
-      });
-
-    for (let i = 0; i < orders.length; i++) {
+    
+    for (let i = counter; i < orders.length; i++) {
         const divContenedor = document.createElement("div");
         divContenedor.setAttribute("class", "card");
         divContenedor.setAttribute("id", "Orden número"+i+1);
@@ -34,5 +32,7 @@ function sendData() {
 
     
         body.appendChild(divContenedor);
+        counter++
       }
+      console.log(counter)
 }
